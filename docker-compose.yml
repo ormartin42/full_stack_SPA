@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:    
+    postgres:
+        image: postgres:alpine
+        ports:
+            - 5432:5432
+        env_file:
+            - ./.envs/postgres.env
+        restart: unless-stopped
+        volumes:
+            - postgres_persistence:/var/lib/postgresql/data
+        networks:
+            - backend
+    back:
+        build:
+            context: ./srcs/back
+            target: dev
+        env_file:
+            - ./.envs/postgres.env
+            - ./.envs/back.env
+        restart: unless-stopped
+        volumes:
+            - ./srcs/back/src:/app/src
+            - ./srcs/back/resources:/app/resources
+        depends_on:
+            - postgres
+        ports:
+            - 3000:3000
+            - 5555:5555
+        networks:
+            - backend
+            - frontend
+    front:
+        build:
+            context: ./srcs/front
+        image: front-vue
+        env_file:
+            - ./.envs/front.env
+        init: true
+        volumes:
+            - ./srcs/front/vue:/appFront
+        depends_on:
+            - back
+        restart: on-failure
+        ports:
+          - 5173:5173
+        networks:
+            - frontend
+
+volumes:
+    postgres_persistence:
+    resources:
+    
+networks:
+    backend:
+        driver: bridge
+    frontend:
+        driver: bridge

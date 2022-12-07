@@ -1,0 +1,192 @@
+@import "./base.css";
+@import url('https://fonts.googleapis.com/css2?family=Homenaje&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inder&display=swap");
+
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.icon_btn {
+  display: inline-flex;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+h1 {
+  /* text-transform: uppercase; */
+  font-size: 3em;
+  font-family: 'Homenaje', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+  Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+#app {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 0 1rem; */
+
+  font-weight: normal;
+}
+
+
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
+}
+
+.like-link {
+  border: none;
+  display: block;
+  background: none;
+}
+
+a, .blue, .like-link {
+  text-decoration: none;
+  color: var(--global-c-blue);
+  transition: 0.4s;
+}
+
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+.red {
+  color: #EB5757;
+  transition: 0.4s;
+  /* background: linear-gradient(to right,#3E140C, #F15E11);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.vue_wrapper {
+  padding: 0 1rem;
+}
+
+/* .triangleUp::after {
+  content: "  ▴";
+}
+.triangleDown::after {
+  content: "  ▾"
+} */
+
+button.cant_click {
+	opacity: .5;
+}
+/* button.cant_click:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, .3);
+} */
+button.cant_click:hover {
+	cursor: not-allowed;
+  opacity: .2;
+}
+.gameList li button.cant_click:hover img{
+  border: none;
+}
+
+
+/*
+User status
+cf type TStatus
+*/
+.available::after, .disconnected::after, .inGame::after, .challenged::after {
+  content: " ";
+  display: block;
+  width: 20%;
+  height: 20%;
+  max-width: 20px;
+  max-height: 20px;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 100px;
+  border: 2px solid #232323;
+}
+
+.available::after {
+  background: var(--global-c-blue);
+}
+.disconnected::after {
+  background: var(--global-c-red);
+}
+.inGame::after {
+  background: orange; /* vomi */
+}
+.challenged::after {
+  background: rgb(95, 7, 176); /* vomi */
+}
+
+
+
+@media screen and (hover: hover) {
+  a:hover, .like-link:hover {
+    background: var(--global-c-blue-hover) !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .vue_wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    /* place-items: center; */
+  }
+
+  #app {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    /* padding: 0 2rem; */
+  }
+  .vue_wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+  }
+}
+
+
+@keyframes whao {
+	0% {
+		background: #fff;
+	}
+	25% {
+		background: rgb(255, 28, 28);
+	}
+	50% {
+		background: rgb(30, 30, 247);
+	}
+	75% {
+		background: rgb(6, 255, 6);
+	}
+	100% {
+		background: rgb(251, 0, 255);
+	}
+}
